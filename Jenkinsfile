@@ -32,6 +32,14 @@ pipeline {
                 echo 'Running Api Tests'
             }
         }
+        stage('API tests') {
+            steps {
+                git branch: 'master', 
+                    url: 'https://github.com/shreyatulsyan/JuiceshopAPI.git', 
+                    credentialsId: 'git'
+                sh 'mvn clean test'
+            }
+        }
         stage('UI tests') {
             steps {
                 echo 'Running UI Tests'
